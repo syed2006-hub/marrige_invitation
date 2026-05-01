@@ -1,0 +1,130 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-cream: var(--cream);
+  --color-rose: var(--rose);
+  --font-script: var(--font-script);
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
+}
+
+:root {
+  --radius: 0.75rem;
+  /* Dark, romantic palette inspired by Mughal/Islamic wedding invite */
+  --background: oklch(0.18 0.012 60);            /* deep warm brown-black */
+  --foreground: oklch(0.95 0.015 80);            /* warm cream */
+  --card: oklch(0.22 0.015 60);
+  --card-foreground: oklch(0.95 0.015 80);
+  --popover: oklch(0.22 0.015 60);
+  --popover-foreground: oklch(0.95 0.015 80);
+  --primary: oklch(0.78 0.13 75);                /* warm gold */
+  --primary-foreground: oklch(0.18 0.012 60);
+  --secondary: oklch(0.28 0.02 60);
+  --secondary-foreground: oklch(0.95 0.015 80);
+  --muted: oklch(0.28 0.015 60);
+  --muted-foreground: oklch(0.72 0.02 70);
+  --accent: oklch(0.78 0.13 75);
+  --accent-foreground: oklch(0.18 0.012 60);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.32 0.02 65 / 60%);
+  --input: oklch(0.28 0.02 60);
+  --ring: oklch(0.78 0.13 75);
+
+  --gold: oklch(0.78 0.13 75);
+  --gold-soft: oklch(0.85 0.09 80);
+  --cream: oklch(0.96 0.018 85);
+  --rose: oklch(0.82 0.06 30);
+
+  --font-script: 'Great Vibes', 'Pinyon Script', cursive;
+  --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+
+  --gradient-gold: linear-gradient(135deg, oklch(0.78 0.13 75), oklch(0.88 0.1 85));
+  --gradient-dark: linear-gradient(180deg, oklch(0.18 0.012 60), oklch(0.14 0.012 50));
+  --shadow-gold: 0 8px 30px -8px oklch(0.78 0.13 75 / 35%);
+}
+
+.dark {
+  --background: oklch(0.18 0.012 60);
+  --foreground: oklch(0.95 0.015 80);
+  --card: oklch(0.22 0.015 60);
+  --card-foreground: oklch(0.95 0.015 80);
+  --popover: oklch(0.22 0.015 60);
+  --popover-foreground: oklch(0.95 0.015 80);
+  --primary: oklch(0.78 0.13 75);
+  --primary-foreground: oklch(0.18 0.012 60);
+  --secondary: oklch(0.28 0.02 60);
+  --secondary-foreground: oklch(0.95 0.015 80);
+  --muted: oklch(0.28 0.015 60);
+  --muted-foreground: oklch(0.72 0.02 70);
+  --accent: oklch(0.78 0.13 75);
+  --accent-foreground: oklch(0.18 0.012 60);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.32 0.02 65 / 60%);
+  --input: oklch(0.28 0.02 60);
+  --ring: oklch(0.78 0.13 75);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html, body { background-color: var(--color-background); color: var(--color-foreground); }
+  body { font-family: var(--font-sans); }
+  .font-script { font-family: var(--font-script); }
+  .font-serif { font-family: var(--font-serif); }
+}
+
+/* Subtle arabesque pattern overlay */
+.bg-arabesque {
+  background-color: var(--background);
+  background-image:
+    radial-gradient(circle at 25% 25%, oklch(0.78 0.13 75 / 0.04) 0%, transparent 40%),
+    radial-gradient(circle at 75% 75%, oklch(0.78 0.13 75 / 0.04) 0%, transparent 40%),
+    repeating-linear-gradient(45deg, transparent 0 30px, oklch(0.78 0.13 75 / 0.025) 30px 31px),
+    repeating-linear-gradient(-45deg, transparent 0 30px, oklch(0.78 0.13 75 / 0.025) 30px 31px);
+}
+
+.text-gradient-gold {
+  background: var(--gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gold-divider {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+}
+.gold-divider::before, .gold-divider::after {
+  content: ''; height: 1px; width: 3rem;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
